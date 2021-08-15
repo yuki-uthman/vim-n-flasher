@@ -36,11 +36,11 @@ endfunction "}}}
 function! s:flash_on(timer_id) "{{{
 
   " if it is only one char then invert color
-  let higroup = matchend(getline('.'), '\c'.@/, col('.')-1) == col('.')
-              \ ? 'SpellRare' : s:user_config.highlight
+  " let higroup = matchend(getline('.'), '\c'.@/, col('.')-1) == col('.')
+  "             \ ? 'ErrorMsg' : s:user_config.highlight
 
   let winid = win_getid()
-  let id = matchadd(higroup, '\%#'.@/) 
+  let id = matchadd(s:user_config.highlight, '\%#'.@/) 
 
   let s:flash.winid = winid
   let s:flash.id = id
@@ -73,12 +73,12 @@ function! s:stop_toggle_timer(timer_id) "{{{
 endfunction "}}}
 
 function! s:get_user_config() "{{{
-  let duration = get(g:, 'nflasher_duration', 500)
-  let repeat = get(g:, 'nflasher_repeat', 1)
+  let duration = get(g:, 'nflasher_duration', 100)
+  let repeat = get(g:, 'nflasher_repeat', 3)
   let keep = get(g:, 'nflasher_keep_flash', 0)
   let highlight = get(g:, 'nflasher_highlight', 'IncSearch')
 
-  return { 'duration': duration, 'repeat': repeat, 'keep_flash': keep, 'highlight': highlight }
+  return { 'duration': duration, 'repeat': repeat * 2 - 1, 'keep_flash': keep, 'highlight': highlight }
 endfunction "}}}
 
 function! s:flash() abort " {{{
