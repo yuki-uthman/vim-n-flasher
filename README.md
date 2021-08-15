@@ -2,7 +2,11 @@
 
 Let's make the n/N motion flashy!
 
+hlsearch on:<br>
 ![hlsearch on](hlsearch.gif)
+
+
+hlsearch off:<br>
 ![hlsearch off](nohlsearch.gif)
 
 ## Installation
@@ -31,6 +35,7 @@ packadd vim-nflasher
 The default values are shown below:
 ```vimL
 " the highlight group of the flash
+" setting to 'Search' will make it invisible when hlsearch is turned on
 let g:nflasher_highlight = 'IncSearch'
 
 " to see all the available highlight groups
@@ -41,11 +46,15 @@ let g:nflasher_duration = 100
 
 " the number of times to flash
 let g:nflasher_repeat = 3
-
-" setting this true keeps the flash on
-" will be turned off when you move the cursor or enter insert mode
-let g:nflasher_keep_flash = 0
 ```
+
+If you prefer to keep the flash on:
+```vimL
+" the flash still goes off if you move the cursor or enter insert mode
+let g:nflasher_keep_flash = 1
+```
+![](keep_flash.gif)
+> **_Note:_** The highlight being used is 'PmenuSel'
 
 If you want to define your own highlight group:
 ```vimL
