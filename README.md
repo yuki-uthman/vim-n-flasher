@@ -32,6 +32,21 @@ packadd vim-n-flasher
 
 ## Configuration
 
+To disable the default mappings:
+```viml
+  let g:n_flasher_no_mappings = 1
+```
+
+Just use the commands below to remap to different keys:
+```viml
+  " the default is n/N
+  nmap n <Plug>(flasher-n)
+  nmap N <Plug>(flasher-N)
+```
+<br>
+<br>
+
+
 The default values are shown below:
 ```vimL
 " the highlight group of the flash
