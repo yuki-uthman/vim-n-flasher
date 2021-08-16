@@ -1,10 +1,4 @@
-function! nflasher#n()
-  call feedkeys('n', 'n')
-  call s:flash()
-endfunction
-
-function! nflasher#N()
-  call feedkeys('N', 'n')
+function! nflasher#flash()
   call s:flash()
 endfunction
 
@@ -23,6 +17,20 @@ function! nflasher#flash_off(mode)
   endif
 endfunction 
 
+function! s:get_visual_selection() "{{{
+  let [l:lnum1, l:col1] = getpos("'<")[1:2]
+  let [l:lnum2, l:col2] = getpos("'>")[1:2]
+  if &selection !=# 'inclusive'
+    let l:col2 -= 1
+  endif
+  let l:lines = getline(l:lnum1, l:lnum2)
+  if !empty(l:lines)
+    let l:lines[-1] = l:lines[-1][: l:col2 - 1]
+    let l:lines[0] = l:lines[0][l:col1 - 1 : ]
+  endif
+  return join(l:lines, "\n")
+endfunction "}}}
+
 function! s:init_flash() "{{{
 
   return { 
@@ -35,12 +43,14 @@ endfunction "}}}
 
 function! s:flash_on(timer_id) "{{{
 
-  " if it is only one char then invert color
-  " let higroup = matchend(getline('.'), '\c'.@/, col('.')-1) == col('.')
-  "             \ ? 'ErrorMsg' : s:user_config.highlight
+  let save_cursor = getcurpos()
+  normal! gn
+  exec "normal! \<ESC>"
+  let string =  s:get_visual_selection()
+  call setpos('.', save_cursor)
 
   let winid = win_getid()
-  let id = matchadd(s:user_config.highlight, '\%#'.@/) 
+  let id = matchadd(s:user_config.highlight, '\%#' . string) 
 
   let s:flash.winid = winid
   let s:flash.id = id

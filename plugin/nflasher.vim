@@ -12,8 +12,8 @@ let g:loaded_nflasher = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-nnoremap <silent><Plug>(nflasher-n) :call nflasher#n()<CR>
-nnoremap <silent><Plug>(nflasher-N) :call nflasher#N()<CR>
+nnoremap <silent><Plug>(nflasher-n) n:call nflasher#flash()<CR>
+nnoremap <silent><Plug>(nflasher-N) N:call nflasher#flash()<CR>
 
 if !exists("g:nflasher_no_mappings") || ! g:nflasher_no_mappings
   nmap n <Plug>(nflasher-n)
