@@ -46,8 +46,10 @@ function! s:flash_on(timer_id) "{{{
   let save_cursor = getcurpos()
   normal! gn
   exec "normal! \<ESC>"
-  let string =  s:get_visual_selection()
   call setpos('.', save_cursor)
+
+  let string =  s:get_visual_selection()
+  let string = escape(string, '~')
 
   let winid = win_getid()
   let id = matchadd(s:user_config.highlight, '\%#' . string) 
