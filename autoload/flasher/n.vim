@@ -1,9 +1,9 @@
-function! nflasher#flash()
+function! flasher#n#flash()
   call s:flash()
 endfunction
 
 " for autocmd
-function! nflasher#flash_off(mode) 
+function! flasher#n#flash_off(mode) 
   if a:mode ==# 'n'
     let s:pos = match(getline('.'), @/, col('.') - 1) + 1
     if s:pos != col('.')
@@ -85,10 +85,10 @@ function! s:stop_toggle_timer(timer_id) "{{{
 endfunction "}}}
 
 function! s:get_user_config() "{{{
-  let duration = get(g:, 'nflasher_duration', 100)
-  let repeat = get(g:, 'nflasher_repeat', 3)
-  let keep = get(g:, 'nflasher_keep_flash', 0)
-  let highlight = get(g:, 'nflasher_highlight', 'IncSearch')
+  let duration = get(g:, 'n_flasher_duration', 100)
+  let repeat = get(g:, 'n_flasher_repeat', 3)
+  let keep = get(g:, 'n_flasher_keep_flash', 0)
+  let highlight = get(g:, 'n_flasher_highlight', 'IncSearch')
 
   return { 'duration': duration, 'repeat': repeat * 2 - 1, 'keep_flash': keep, 'highlight': highlight }
 endfunction "}}}

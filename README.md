@@ -1,4 +1,4 @@
-# vim-nflasher
+# vim-n-flasher
 
 Let's make the n/N motion flashy!
 
@@ -13,21 +13,21 @@ hlsearch off:<br>
 
 * vim-plug
 ```viml
-Plug 'yuki-uthman/vim-nflasher'
+Plug 'yuki-uthman/vim-n-flasher'
 ```
 
 * vundle
 ```viml
-Plugin 'yuki-uthman/vim-nflasher'
+Plugin 'yuki-uthman/vim-n-flasher'
 ```
 
 * minpac:
 ```viml
-call minpac#add('yuki-uthman/vim-nflasher')
+call minpac#add('yuki-uthman/vim-n-flasher')
 
 " for lazy loading
-call minpac#add('yuki-uthman/vim-nflasher', { 'type': 'opt' })
-packadd vim-nflasher
+call minpac#add('yuki-uthman/vim-n-flasher', { 'type': 'opt' })
+packadd vim-n-flasher
 ```
 
 ## Configuration
@@ -36,22 +36,22 @@ The default values are shown below:
 ```vimL
 " the highlight group of the flash
 " setting to 'Search' will make it invisible when hlsearch is turned on
-let g:nflasher_highlight = 'IncSearch'
+let g:n_flasher_highlight = 'IncSearch'
 
 " to see all the available highlight groups
 :h highlight 
 
 " the duration of the flash (in milliseconds)
-let g:nflasher_duration = 100
+let g:n_flasher_duration = 100
 
 " the number of times to flash
-let g:nflasher_repeat = 3
+let g:n_flasher_repeat = 3
 ```
 
 If you prefer to keep the flash on:
 ```vimL
 " the flash still goes off if you move the cursor or enter insert mode
-let g:nflasher_keep_flash = 1
+let g:n_flasher_keep_flash = 1
 ```
 ![](keep_flash.gif)
 > **_Note:_** The highlight being used is 'PmenuSel'
@@ -68,7 +68,7 @@ highlight flasherColor ctermfg='White' ctermbg='Black'
 " guibg as the background color
 highlight flasherColor guifg='White' guibg='Black'
 
-let g:nflasher_highlight = 'flasherColor'
+let g:n_flasher_highlight = 'flasherColor'
 ```
 The following colors are available in most systems:
   - Black
