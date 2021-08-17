@@ -12,12 +12,12 @@ let g:loaded_n_flasher = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-nnoremap <silent><Plug>(flasher-n) n:call flasher#n#flash()<CR>
-nnoremap <silent><Plug>(flasher-N) N:call flasher#n#flash()<CR>
+nnoremap <silent><Plug>(n-flasher) n:call flasher#n#flash()<CR>
+nnoremap <silent><Plug>(N-flasher) N:call flasher#n#flash()<CR>
 
 if !exists("g:n_flasher_no_mappings") || ! g:n_flasher_no_mappings
-  nmap n <Plug>(flasher-n)
-  nmap N <Plug>(flasher-N)
+  nmap n <Plug>(n-flasher)
+  nmap N <Plug>(N-flasher)
 endif
 
 

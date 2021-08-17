@@ -40,8 +40,8 @@ To disable the default mappings:
 Just use the commands below to remap to different keys:
 ```viml
   " the default is n/N
-  nmap n <Plug>(flasher-n)
-  nmap N <Plug>(flasher-N)
+  nmap n <Plug>(n-flasher)
+  nmap N <Plug>(N-flasher)
 ```
 <br>
 <br>
